@@ -29,7 +29,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
     // ===========================================================
     // Fields
     // ===========================================================
-
     private ArrayList<String> mWordListForeign;
     static Typeface fontChanger;
     private OnItemClickListener mOnItemClickListener;
@@ -46,18 +45,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
         fontChanger = cFont;
     }
 
-//    ArrayList<String> dataReader(String path) {
-//        ArrayList<String> list = new ArrayList<>();
-//        try {
-//            BufferedReader in = new BufferedReader(new FileReader(path));
-//            String str;
-//            while ((str = in.readLine()) != null)
-//                list.add(str);
-//            in.close();
-//        } catch (IOException e) {
-//        }
-//        return list;
-//    }
 
     // ===========================================================
     // Getter & Setter

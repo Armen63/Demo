@@ -9,8 +9,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.com.armen.th.R;
-import com.com.armen.th.db.Data;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by Armen on 2/4/2018.
@@ -31,18 +32,20 @@ public class CountryPagerAdapter extends PagerAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private ImageView imageView;
+    private ArrayList<Integer> listOfImages;
     // ===========================================================
     // Constructors
     // ===========================================================
 
-    public CountryPagerAdapter(Context context) {
+    public CountryPagerAdapter(ArrayList<Integer> images, Context context) {
         mContext = context;
+        listOfImages = images;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return Data.IMAGES.size();
+        return listOfImages.size();
     }
 
     @Override
@@ -56,7 +59,7 @@ public class CountryPagerAdapter extends PagerAdapter {
         imageView = itemView.findViewById(R.id.ivImage);
 
         Picasso.with(itemView.getContext())
-                .load(Data.IMAGES.get(position))
+                .load(listOfImages.get(position))
                 .into(imageView);
 
         container.addView(itemView);

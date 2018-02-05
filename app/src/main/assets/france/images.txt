@@ -1,0 +1,7 @@
+R.drawable.armenia_1
+R.drawable.armenia_2
+R.drawable.armenia_3
+R.drawable.armenia_4
+R.drawable.armenia_5
+R.drawable.armenia_6
+R.drawable.armenia_7

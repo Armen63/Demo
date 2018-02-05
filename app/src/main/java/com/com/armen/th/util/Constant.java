@@ -8,7 +8,7 @@ public class Constant {
         public static final String PRODUCT_LIST = HOST + "/aca_pl/products.json";
         public static final String PRODUCT_ITEM = HOST + "/aca_pl/products/"; // id
         public static final String PRODUCT_ITEM_POSTFIX = "/details.json";
-        public static final String PRODUCT_ITEM_STATIC_IMAGE = "https://s3-eu-west-1.amazonaws.com/developer-application-test/images/3.jpg";
+        public static final String PRODUCT_ITEM_STATIC_IMAGE = "https://s3-eu-west-1.amazonaws.com/developer-application-test/images/russia_3.jpg";
     }
 
     public class Argument {

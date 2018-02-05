@@ -7,17 +7,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.com.armen.th.R;
 import com.com.armen.th.db.Data;
+import com.com.armen.th.db.helper.Helper;
 import com.com.armen.th.ui.adapter.CountryPagerAdapter;
 import com.com.armen.th.ui.adapter.WordAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class CountryActivity extends BaseActivity implements View.OnClickListener, WordAdapter.OnItemClickListener {
@@ -104,7 +103,7 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
 
     private void init() {
         countryName = getIntent().getStringExtra("COUNTRY_NAME");
-        fillList();
+//        fillList();
         initViewPager();
         initRecycleView();
     }
@@ -114,12 +113,12 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
         mRecyclerViewWord.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewWord.setItemAnimator(new DefaultItemAnimator());
         cFont = Typeface.createFromAsset(getAssets(), "fonts/myFont.ttf");
-        mWordAdapter = new WordAdapter(mWordListForeign, cFont, this);
+        mWordAdapter = new WordAdapter(Helper.getWords(countryName, getApplication()), cFont, this);
         mRecyclerViewWord.setAdapter(mWordAdapter);
     }
 
     private void initViewPager() {
-        mCustomPagerAdapter = new CountryPagerAdapter(this);
+        mCustomPagerAdapter = new CountryPagerAdapter(Helper.getImages(countryName), this);
         mViewPager.setAdapter(mCustomPagerAdapter);
 
 //        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25 * 2, getResources().getDisplayMetrics());
@@ -129,23 +128,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
 
     }
 
-
-    private void fillList() {
-        Log.d(LOG_TAG, countryName);
-        switch (countryName) {
-            case "Armenia":
-                mWordListForeign = new ArrayList<>(Arrays.asList(Data.ARMENIAN_WORDS_EN));
-                break;
-            case "Russia":
-                mWordListForeign = new ArrayList<>(Arrays.asList(Data.RUSSIAN_WORDS_EN));
-                break;
-            case "France":
-                mWordListForeign = new ArrayList<>(Arrays.asList(Data.FRENCH_WORDS_EN));
-                break;
-            //....
-
-        }
-    }
 
     @Override
     public void onItemClick(String word, int position) {
@@ -163,7 +145,15 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
                 case "France":
                     mTts.speak(Data.FRENCH_WORDS_FR[position], TextToSpeech.QUEUE_FLUSH, null);
                     break;
-
+                case "Georgia":
+                    mTts.speak(Data.GEORGIAN_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null);
+                    break;
+                case "Germany":
+                    mTts.speak(Data.GERMANY_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null);
+                    break;
+                case "Spain":
+                    mTts.speak(Data.SPAIN_WORDS_ES[position], TextToSpeech.QUEUE_FLUSH, null);
+                    break;
             }
         });
     }

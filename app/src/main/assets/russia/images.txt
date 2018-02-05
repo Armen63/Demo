@@ -1,0 +1,7 @@
+R.drawable.russia_1
+R.drawable.russia_2
+R.drawable.russia_3
+R.drawable.russia_4
+R.drawable.russia_5
+R.drawable.russia_6
+R.drawable.russia_7
