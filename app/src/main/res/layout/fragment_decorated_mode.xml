@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:background="#3B0330"
+    tools:context="com.com.armen.th.ui.fragment.CircleFragment">
+
+    <am.andranik.semicirclelayoutmanger.custom_views.SemiCircleLineViewRed
+        android:id="@+id/circle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/carousel_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        />
+
+</FrameLayout>
