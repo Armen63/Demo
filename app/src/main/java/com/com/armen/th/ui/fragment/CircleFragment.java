@@ -3,6 +3,7 @@ package com.com.armen.th.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -56,7 +57,7 @@ public class CircleFragment extends Fragment implements CountryFlagCircleAdapter
     // ===========================================================
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_decorated_mode, container, false);
         rvCircle = view.findViewById(R.id.carousel_rv);
 
@@ -64,7 +65,7 @@ public class CircleFragment extends Fragment implements CountryFlagCircleAdapter
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initAndSet();
     }
@@ -85,10 +86,6 @@ public class CircleFragment extends Fragment implements CountryFlagCircleAdapter
     // ===========================================================
     // Methods
     // ===========================================================
-
-    private void findViews() {
-
-    }
 
     @Override
     public void onItemSelected(Country item) {

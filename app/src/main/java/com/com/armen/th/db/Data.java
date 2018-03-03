@@ -2,13 +2,19 @@ package com.com.armen.th.db;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Armen on 2/2/2018.
  */
 
 public class Data {
+
+
+    public static final Map<Integer, String[]> MATCHER = new LinkedHashMap<>();
+
     public static final List<String> COUNTRY_NAME = new ArrayList<>(Arrays.asList("Armenia", "Russia", "Georgia", "France", "Germany", "Spain"));
     public static final List<String> COUNTRY_CODE = new ArrayList<>(Arrays.asList("am", "ru", "ge", "fr", "de", "es"));
 
@@ -22,4 +28,12 @@ public class Data {
     public static final String[] GEORGIAN_WORDS_GE = {"Gamarjoba", "Nakhvamdis", "Diakh", "Ara", "Ukatsravad", "Getakva", "Me Mikvars", "Me mchirdeba", "Me minda", "Maghazia", "Sakvebi", "Madloba"};
     public static final String[] GERMANY_WORDS_GE = {"Hallo", "Auf Wiedersehen", "Ja", "Nein", "Entschuldigen Sie mich", "Bitte", "Ich liebe", "Ich brauche", "Ich will", "Geschäft", "Essen", "Danke"};
 
+    static {
+        MATCHER.put(0, ARMENIAN_WORDS_ARM);
+        MATCHER.put(1, RUSSIAN_WORDS_RU);
+        MATCHER.put(2, GEORGIAN_WORDS_GE);
+        MATCHER.put(3, FRENCH_WORDS_FR);
+        MATCHER.put(4, GERMANY_WORDS_GE);
+        MATCHER.put(5, SPAIN_WORDS_ES);
+    }
 }

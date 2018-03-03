@@ -2,6 +2,7 @@ package com.com.armen.th.ui.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class CountryPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return listOfImages.size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -55,9 +56,11 @@ public class CountryPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        Log.d(LOG_TAG, " posion = " + position);
         View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
         imageView = itemView.findViewById(R.id.ivImage);
-
+        if (position == listOfImages.size())
+            position -= listOfImages.size();
         Picasso.with(itemView.getContext())
                 .load(listOfImages.get(position))
                 .into(imageView);

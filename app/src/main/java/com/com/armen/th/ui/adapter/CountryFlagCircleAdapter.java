@@ -88,7 +88,7 @@ public class CountryFlagCircleAdapter extends RecyclerView.Adapter<CountryFlagCi
         private ImageView avatarSelectedIv;
         private DecoratedViewHolder.OnItemSelectedListener onItemSelectedListener;
 
-        public DecoratedViewHolder(View itemView, DecoratedViewHolder.OnItemSelectedListener onItemSelectedListener) {
+        DecoratedViewHolder(View itemView, DecoratedViewHolder.OnItemSelectedListener onItemSelectedListener) {
             super(itemView);
             this.onItemSelectedListener = onItemSelectedListener;
 

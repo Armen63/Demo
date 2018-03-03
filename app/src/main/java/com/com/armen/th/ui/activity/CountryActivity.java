@@ -12,12 +12,13 @@ import android.view.View;
 
 import com.com.armen.th.R;
 import com.com.armen.th.db.Data;
-import com.com.armen.th.db.helper.Helper;
+import com.com.armen.th.util.Helper;
 import com.com.armen.th.ui.adapter.CountryPagerAdapter;
 import com.com.armen.th.ui.adapter.WordAdapter;
 
-import java.util.ArrayList;
 import java.util.Locale;
+
+import static com.com.armen.th.db.Data.MATCHER;
 
 public class CountryActivity extends BaseActivity implements View.OnClickListener, WordAdapter.OnItemClickListener {
 
@@ -35,7 +36,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
     private ViewPager mViewPager;
     private WordAdapter mWordAdapter;
     private CountryPagerAdapter mCustomPagerAdapter;
-    private ArrayList<String> mWordListForeign;
     private String countryName;
     private Typeface cFont;
     private TextToSpeech mTts;
@@ -55,7 +55,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
         findViews();
         init();
         customizeActionBar();
-        setListeners();
     }
 
 
@@ -63,7 +62,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
     protected int getLayoutResource() {
         return R.layout.activity_country;
     }
-
 
     // ===========================================================
     // Click Listeners
@@ -83,11 +81,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void setListeners() {
-
-    }
-
     // ===========================================================
     // Methods
     // ===========================================================
@@ -103,7 +96,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
 
     private void init() {
         countryName = getIntent().getStringExtra("COUNTRY_NAME");
-//        fillList();
         initViewPager();
         initRecycleView();
     }
@@ -120,12 +112,7 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
     private void initViewPager() {
         mCustomPagerAdapter = new CountryPagerAdapter(Helper.getImages(countryName), this);
         mViewPager.setAdapter(mCustomPagerAdapter);
-
-//        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25 * 2, getResources().getDisplayMetrics());
-//        mViewPager.setPageMargin(-margin);
-//        mViewPager.setPadding(80, 0, 80, 0);
-//        mViewPager.setCurrentItem(1);
-
+        mViewPager.setPageMargin(10);
     }
 
 
@@ -134,27 +121,29 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
         mTts = new TextToSpeech(CountryActivity.this, status -> {
             int currentPos = Data.COUNTRY_NAME.indexOf(countryName);
             mTts.setLanguage(new Locale(Data.COUNTRY_CODE.get(currentPos)));
-
-            switch (countryName) {
-                case "Armenia":
-                    mTts.speak(Data.ARMENIAN_WORDS_ARM[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
-                case "Russia":
-                    mTts.speak(Data.RUSSIAN_WORDS_RU[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
-                case "France":
-                    mTts.speak(Data.FRENCH_WORDS_FR[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
-                case "Georgia":
-                    mTts.speak(Data.GEORGIAN_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
-                case "Germany":
-                    mTts.speak(Data.GERMANY_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
-                case "Spain":
-                    mTts.speak(Data.SPAIN_WORDS_ES[position], TextToSpeech.QUEUE_FLUSH, null);
-                    break;
+            for(int i =0; i < Data.COUNTRY_NAME.size(); ++i){
+                mTts.speak(MATCHER.get(i)[position],TextToSpeech.QUEUE_FLUSH,null,countryName);
             }
+//            switch (countryName) {
+//                case "Armenia":
+//                    mTts.speak(Data.ARMENIAN_WORDS_ARM[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//                case "Russia":
+//                    mTts.speak(Data.RUSSIAN_WORDS_RU[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//                case "France":
+//                    mTts.speak(Data.FRENCH_WORDS_FR[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//                case "Georgia":
+//                    mTts.speak(Data.GEORGIAN_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//                case "Germany":
+//                    mTts.speak(Data.GERMANY_WORDS_GE[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//                case "Spain":
+//                    mTts.speak(Data.SPAIN_WORDS_ES[position], TextToSpeech.QUEUE_FLUSH, null, countryName);
+//                    break;
+//            }
         });
     }
 }

@@ -1,4 +1,4 @@
-package com.com.armen.th.db.helper;
+package com.com.armen.th.util;
 
 import android.content.Context;
 
@@ -43,7 +43,6 @@ public class Helper {
                 return new ArrayList<>(Arrays.asList(R.drawable.germany_1, R.drawable.germany_2, R.drawable.germany_3, R.drawable.germany_4, R.drawable.germany_5, R.drawable.germany_6, R.drawable.germany_7));
             case "Spain":
                 return new ArrayList<>(Arrays.asList(R.drawable.spain_1, R.drawable.spain_2, R.drawable.spain_3, R.drawable.spain_4, R.drawable.spain_5, R.drawable.spain_6, R.drawable.spain_7));
-
             default:
                 return null;
         }
